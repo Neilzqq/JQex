@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>variable</title>
+</head>
+<body>
+    <script>
+        // 面試考題
+        // Hoist 提升 因為順序重要 所以ES6 特別強店
+        // 必須先宣告 才能使用這個變數
+        console.log(x);
+        console.log(a);
+        console.log(c);
+
+        // ES5 變數宣告是用 var來宣告
+        var x =10;
+        var y =20;
+
+        // ES6 變數宣告從 var 分解成兩個 1.let 2.const
+        let a = 10;
+        const b = 20;
+
+        // let (可重新賦值) VS const (不可重新賦值)
+        a = 11;
+        b = 21;
+
+        // typeof 可檢查是啥型態
+        // typeof a      typeof b
+        // 簡單資料有三種1.數字 2.字串 3.布林值(true/false)
+        
+    </script>
+</body>
+</html>

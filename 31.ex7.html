@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex7</title>
+    <style>
+        body {
+            margin: 0;
+            height: 300vh;
+            transition: .5s;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 50px;
+            background-color: #ccc;
+            position: fixed;
+            top: 0;
+        }
+
+        .box {
+            background-color: pink;
+            height: 50px;
+            width: 10%;
+        }
+
+        .box1{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 700px;
+            left: 200px;
+            background-color: aqua;
+            transition: .5s;
+            transform: translateX(-500px);
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="box"></div>
+    </div>
+    <div class="box1"></div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script>
+        //套件 scrollmagic greensock
+        //50+'%' = 數字 + 字串
+        console.log('body 全長：', $('body').height());
+        $('.box').css('width', (50 + '%'));
+
+        //使用者現在在哪
+        console.log('分子/分母:', $(window).scrollTop() / $('body').height());
+        
+        //math mdn math.floor = 最大整數
+        console.log('乘以100:', ($(window).scrollTop() / $('body').height()) * 100);
+        console.log('去掉後面小數點:', Math.floor(($(window).scrollTop() / $('body').height()) * 100));
+
+        //變成一個字串
+        console.log('後面加一個%的符號:', Math.floor(($(window).scrollTop() / $('body').height()) * 100) + '%');
+
+        $('.box').css('width',Math.floor(($(window).scrollTop() / $('body').height()) * 100) + '%');
+
+        $(window).scroll(function (){
+            //100vh = window height
+            const bodyMinusWindowHeight =  $('body').height() - $(window).height();
+            //const percenpage = Math.floor(($(window).scrollTop() / $('body').height()) * 100)
+            const percenpage = Math.floor(($(window).scrollTop() / bodyMinusWindowHeight) * 100 )
+
+            
+            
+            console.log('percenpage',percenpage + '%');
+            $('.box').css('width',percenpage + '%');
+
+            console.log("$(window).scrollTop()",$(window).scrollTop())
+            //在事件裡面加入一個條件判斷式
+            // if($(window).scolltop() > 500 && $(window).scrolltop() <= 600){
+                // $('body').css('background','orange');
+            // }
+            if($(window).scrollTop() > 600){
+                $('body').css('background','orange');
+                // $('.box1').css('transform','translateX(0)')
+
+            }
+            else if($(window).scrollTop() > 500){
+                $('body').css('background','red');
+                $('.box1').css('transform','translateX(0)').css('opacity','1');
+            }
+            else{
+                $('body').css('background','green');
+                $('.box1').css('transform','translateX(-500px)').css('opacity','0')
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>

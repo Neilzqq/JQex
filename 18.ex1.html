@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <table class="table table-bordered mt-5">
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>Elon Musk</td>
+                    <td>0912345678</td>
+                    <td>ElonMusk@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>Elon Musk</td>
+                    <td>0912345678</td>
+                    <td>ElonMusk@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>Elon Musk</td>
+                    <td>0912345678</td>
+                    <td>ElonMusk@gmail.com</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                    <td>Elon Musk</td>
+                    <td>0912345678</td>
+                    <td>ElonMusk@gmail.com</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script>
+        // console.log('$(this):',$(this)); 有$符號的為jq使用
+        // console.log('this:',this) 啥都沒有的為javasciipt使用
+
+        $('input').click(function () {
+            console.log('hi', $(this));
+            // attr屬性 看html上的屬性標籤 通常用在預設
+            console.log('$(this).attr("checked"):', $(this).attr("checked"));
+            // prop(property)狀態 判斷現在畫面是否為checked
+            console.log('$(this).prop("checked"):', $(this).prop("checked"));
+
+            if ($(this).prop('checked')) {
+                // 測試
+                console.log('true');
+                $(this).closest('tr').css('background', 'lightblue');
+            }
+            else {
+                console.log('false');
+                $(this).closest('tr').css("background", 'none');
+            }
+
+
+        });
+
+
+        // 快速的方法二
+        $('input').click(function () {
+            $('tr').css('background', 'transparent');
+            $('input:checked').closest('tr').css('background', 'lightblue');
+        });
+    </script>
+</body>
+
+</html>

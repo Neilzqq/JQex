@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouse-event</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <button class="btn btn-primary">button</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script>
+        $('.btn').click(function () {
+            console.log('click');
+        });
+
+        //   單純的執行命令 沒辦法再呼叫一次
+        // 如果要重複執行的話請綁在function裡面
+        // babel prettier
+        console.log('dblclick2');
+
+        //   綁定監聽器的機制
+        $('.btn').dblclick(function () {
+            console.log('dblclick');
+
+            $('.btn').contextmenu(function () {
+                console.log('contextmenu');
+            });
+        });
+
+        $('.btn').mousedown(function () {
+            console.log('mousedown');
+        });
+
+        $('.btn').mouseup(function () {
+            console.log('mouseup');
+        }, function(){
+            console.log('mousedown');
+        });
+
+        $('.btn').mouseenter(function () {
+            console.log('mouseenter');
+            $(this).css('background', 'yellow');
+            $(this).css('color','red');
+        });
+
+        $('.btn').mouseleave(function () {
+            console.log('mouseleave');
+            $(this).css('background', 'black');
+        });
+
+        $('.btn').hover(function () {
+            console.log('hover');
+        });
+
+        $('.btn').hover(function () {
+            console.log('hover in');
+        }, function () {
+            console.log('hover leave');
+        });
+    </script>
+</body>
+
+</html>
